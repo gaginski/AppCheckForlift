@@ -1,3 +1,4 @@
+import 'package:CheckForklift/Class/Veiculo.dart';
 import 'package:CheckForklift/shared/themes/app_text_styles.dart';
 import 'package:CheckForklift/shared/themes/appcolors.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,8 @@ class CadUtilizacao extends StatefulWidget {
   @override
   _CadUtilizacao createState() => _CadUtilizacao();
 }
+
+setRegistro(ListaVeiculos) {}
 
 class _CadUtilizacao extends State<CadUtilizacao> {
   @override
@@ -48,9 +51,9 @@ class _CadUtilizacao extends State<CadUtilizacao> {
                       ),
                       child: Icon(
                         Icons.car_rental_rounded,
-                        size: (size.width / 2.5),
+                        size: (size.height / 5),
                       ),
-                      width: size.width / 2.5,
+                      width: size.width / 2,
                     ),
                     Container(
                         padding: EdgeInsets.symmetric(
@@ -97,7 +100,7 @@ class _CadUtilizacao extends State<CadUtilizacao> {
                     child: ButtonTheme(
                       child: RaisedButton(
                           child: Text(
-                            "Solicitar Acesso",
+                            "Iniciar Utilização",
                             style: AppTextStyles.buttonGray,
                           ),
                           color: AppColors.background,
@@ -110,7 +113,7 @@ class _CadUtilizacao extends State<CadUtilizacao> {
                       child: ButtonTheme(
                         child: RaisedButton(
                             child: Text(
-                              "Solicitar Acesso",
+                              "Cancelar",
                               style: AppTextStyles.buttonGray,
                             ),
                             color: AppColors.background,

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:CheckForklift/Class/Dispositivo.dart';
 import 'package:http/http.dart' as http;
 

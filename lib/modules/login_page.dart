@@ -1,7 +1,12 @@
+import 'package:CheckForklift/Class/Config.dart';
+import 'package:CheckForklift/Controller/ControllerRest.dart';
+import 'package:CheckForklift/Controller/DataBaseHelper.dart';
+import 'package:CheckForklift/Controller/Instance.dart';
+import 'package:CheckForklift/modules/utilizacao.dart';
 import 'package:CheckForklift/shared/themes/app_images.dart';
 import 'package:CheckForklift/shared/themes/app_text_styles.dart';
 import 'package:CheckForklift/shared/themes/appcolors.dart';
-import 'package:CheckForklift/shared/widgets/social_login_buttom/buttonSocialLogin.dart';
+import 'package:CheckForklift/shared/widgets/social_login_buttom/buttonConfigServidor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,6 +16,59 @@ import 'ListaVeiculos.dart';
 class LoginPage extends StatefulWidget {
   @override
   _LoginPage createState() => _LoginPage();
+}
+
+Widget retonaButonPageLogin(BuildContext context) {
+  if (Instancia.atual.url.isEmpty) {
+    var r = ButtonConfigurarApi(
+        onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ConfigAcessPage()))
+            });
+
+    r.setText("Configurações do servidor");
+
+    return r;
+  } else if (Instancia.atual.usuario.isEmpty || Instancia.atual.senha.isEmpty) {
+    var r = ButtonConfigurarApi(
+        onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CadUtilizacao()))
+            });
+
+    r.setText("Realizar Login");
+
+    return r;
+  }
+
+  var r = ButtonConfigurarApi(
+      onTap: () => {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ListagemVeiculos()))
+          });
+  r.setText("Inicializar");
+
+  return r;
+
+  /*returnBd.then((value) => classConfig = value);
+    //var returnBd = v.getCofig();
+  ClassConfig classConfig = new ClassConfig();
+  if (classConfig.urlApi.isEmpty) {
+    return ButtonConfigurarApi(
+        onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ConfigAcessPage()))
+            });
+  } else if (classConfig.usuarioLogado != 0 &&
+      ControllerRest.instance.getToken(classConfig.usuarioLogado,
+          classConfig.senhaUsuarioLogado, classConfig.urlApi)) {
+    return ButtonConfigurarApi(
+        onTap: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ListagemVeiculos()))
+            });
+  }
+*/
 }
 
 void _portraitModeOnly() {
@@ -103,15 +161,7 @@ class _LoginPage extends State<LoginPage> {
                                 padding: const EdgeInsets.only(
                                     left: 40, right: 40, top: 40),
                                 child: Opacity(
-                                  child: ButtonConfigurarApi(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ListagemVeiculos()));
-                                    },
-                                  ),
+                                  child: retonaButonPageLogin(context),
                                   opacity: animeText ? 1.0 : 0.0,
                                 ),
                               )

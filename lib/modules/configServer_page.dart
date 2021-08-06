@@ -1,7 +1,7 @@
 import 'package:CheckForklift/shared/themes/app_images.dart';
 import 'package:CheckForklift/shared/themes/app_text_styles.dart';
 import 'package:CheckForklift/shared/themes/appcolors.dart';
-import 'package:CheckForklift/shared/widgets/social_login_buttom/buttonSocialLogin.dart';
+import 'package:CheckForklift/shared/widgets/social_login_buttom/buttonConfigServidor.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

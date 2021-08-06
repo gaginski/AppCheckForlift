@@ -3,9 +3,15 @@ import 'package:CheckForklift/shared/themes/app_text_styles.dart';
 import 'package:CheckForklift/shared/themes/appcolors.dart';
 import 'package:flutter/material.dart';
 
+var text = new TextEditingController();
+
 class ButtonConfigurarApi extends StatelessWidget {
   final VoidCallback onTap;
   const ButtonConfigurarApi({Key? key, required this.onTap}) : super(key: key);
+
+  void setText(String txt) {
+    text.text = txt;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,7 @@ class ButtonConfigurarApi extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Configurar acesso ao servidor",
+                    text.text,
                     style: AppTextStyles.buttonGray,
                   ),
                 ],
